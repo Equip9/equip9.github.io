@@ -68,3 +68,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  kramdown
+
+BUNDLED WITH
+   1.10.6
