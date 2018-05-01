@@ -1,6 +1,5 @@
-# Deploying
+# Development
 
 ```
-$ bundle exec jekyll build
-$ firebase deploy
+$ foreman start
 ```
