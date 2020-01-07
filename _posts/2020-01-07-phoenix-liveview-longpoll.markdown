@@ -22,7 +22,7 @@ liveSocket.connect()
 And remember to enable longpoll in `lib/demo_web/endpoint.ex`.
 
 ```elixir
-socket "//live", Phoenix.LiveView.Socket,
+socket "/live", Phoenix.LiveView.Socket,
   websocket: [connect_info: [session: @session_options]],
   longpoll: true
 ```
