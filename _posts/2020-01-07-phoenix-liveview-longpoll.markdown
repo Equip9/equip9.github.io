@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Phoenix LiveView with longpoll"
-date: 2020-01-07 17:00
+date: 2020-01-06 17:00
 comments: true
 categories:
 ---
