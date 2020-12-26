@@ -1,0 +1,19 @@
+I"Ó<p>One of the <a href="https://www.phoenixframework.org/">Phoenix Framework</a> killer features is <a href="https://github.com/phoenixframework/phoenix_live_view">LiveView</a>, which lets you build real time websites using websockets and <a href="https://elixir-lang.org/">Elixir</a>.</p>
+
+<p>Phoenix LiveView has been built on top of <a href="https://hexdocs.pm/phoenix/channels.html">Phoenix Channels</a>, which use websockets technology to let the client and the server communicate, but might not be very obvious that one can use <a href="https://en.wikipedia.org/wiki/Push_technology#Long_polling">longpolling</a> as an alternative for websockets when setting up LiveView. As pointed out <a href="https://elixirforum.com/t/live-view-fallback-with-no-websocket/26068">here</a> LiveView can use the <code class="highlighter-rouge">LongPoll</code> transport like one would use for normal websockets.</p>
+
+<p>On <code class="highlighter-rouge">assets/js/app.js</code>, you can pass options as a third argument to <code class="highlighter-rouge">LiveSocket()</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span><span class="nx">Socket</span><span class="p">,</span> <span class="nx">LongPoll</span><span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">phoenix</span><span class="dl">"</span>
+<span class="k">import</span> <span class="nx">LiveSocket</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">phoenix_live_view</span><span class="dl">"</span>
+<span class="kd">let</span> <span class="nx">liveSocket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">LiveSocket</span><span class="p">(</span><span class="dl">"</span><span class="s2">/admin/ticker/live</span><span class="dl">"</span><span class="p">,</span> <span class="nx">Socket</span><span class="p">,</span> <span class="p">{</span><span class="na">transport</span><span class="p">:</span> <span class="nx">LongPoll</span><span class="p">})</span>
+<span class="nx">liveSocket</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>And remember to enable longpoll in <code class="highlighter-rouge">lib/demo_web/endpoint.ex</code>.</p>
+
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">socket</span> <span class="s2">"/live"</span><span class="p">,</span> <span class="no">Phoenix</span><span class="o">.</span><span class="no">LiveView</span><span class="o">.</span><span class="no">Socket</span><span class="p">,</span>
+  <span class="ss">websocket:</span> <span class="p">[</span><span class="ss">connect_info:</span> <span class="p">[</span><span class="ss">session:</span> <span class="nv">@session_options</span><span class="p">]],</span>
+  <span class="ss">longpoll:</span> <span class="no">true</span>
+</code></pre></div></div>
+:ET

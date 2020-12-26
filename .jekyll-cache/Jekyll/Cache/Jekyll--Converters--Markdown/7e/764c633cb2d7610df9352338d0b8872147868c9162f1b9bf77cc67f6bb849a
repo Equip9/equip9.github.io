@@ -1,0 +1,4 @@
+I"2<p>Adding a WiFi Shield to your Arduino may not be <a href="http://www.cooking-hacks.com/index.php/xbee-wifi-module-for-arduino-digi-official.html">that</a> <a href="http://www.cooking-hacks.com/index.php/wifi-module-for-arduino-roving-rn-xvee-xbee-compatible.html">expensive</a>, but I’m sure you have plenty of old hardware ready to be reused. Good news is that if you want to use an <a href="http://www.apple.com/airport-express/">Airport Express</a> with your <a href="http://arduino.cc/en/Main/ArduinoEthernetShield">Ethernet Shield</a> you can use the USB port to power your Arduino board <strong>without</strong> having to use an <strong>external power supply</strong>.</p>
+
+<p><img src="https://s3-eu-west-1.amazonaws.com/blog.equip9.org/images/arduino-airportextreme.jpg" class="center" width="100%" /></p>
+:ET

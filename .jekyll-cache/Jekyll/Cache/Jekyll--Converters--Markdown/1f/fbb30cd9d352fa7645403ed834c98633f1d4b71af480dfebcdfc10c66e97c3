@@ -1,0 +1,33 @@
+I"d<p>I’m new to <a href="http://couchdb.apache.org/">CouchDB</a>, but there are 2 built-in features that have caught my attention:</p>
+
+<ol>
+  <li>Versioning system using <em>document revisions</em></li>
+  <li>Web admin inteface: <a href="http://wiki.apache.org/couchdb/Getting_started_with_Futon">Futon</a></li>
+</ol>
+
+<h1 id="versioning-system-using-document-revision">Versioning system using document revision</h1>
+
+<p>Each document update is a new revision to that document, so you won’t get data corruption easily in case your connection dropped. This is an examples of creating a new document using <a href="http://rubygems.org/gems/couchrest">CouchRest</a> ruby gem:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span> <span class="o">=</span> <span class="no">CouchRest</span><span class="p">.</span><span class="nf">database!</span><span class="p">(</span><span class="s2">"http://localhost:5984/database-name"</span><span class="p">)</span>
+<span class="no">DB</span><span class="p">.</span><span class="nf">save_doc</span><span class="p">({</span><span class="ss">team: </span><span class="s2">"FC. Barcelona"</span><span class="p">,</span> <span class="ss">player: </span><span class="s2">"Messi"</span><span class="p">})</span>
+<span class="c1"># =&gt; {"ok"=&gt;true, "id"=&gt;"9c6182ff604654baa0d23aa7b73eb09d", "rev"=&gt;"1-0842f1a97b2a32ea71faa8a152156f98"} </span>
+</code></pre></div></div>
+
+<p>Updating a document (creates a new revision)</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">DB</span> <span class="o">=</span> <span class="no">CouchRest</span><span class="p">.</span><span class="nf">database!</span><span class="p">(</span><span class="s2">"http://localhost:5984/database-name"</span><span class="p">)</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="no">DB</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="s2">"9c6182ff604654baa0d23aa7b73eb09d"</span><span class="p">)</span>
+<span class="no">DB</span><span class="p">.</span><span class="nf">update_doc</span><span class="p">(</span><span class="n">doc</span><span class="p">.</span><span class="nf">id</span><span class="p">)</span> <span class="p">{</span><span class="o">|</span><span class="n">doc</span><span class="o">|</span> <span class="n">doc</span><span class="p">[</span><span class="s2">"player"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"Leo Messi"</span><span class="p">}</span>
+<span class="c1"># =&gt; #&lt;CouchRest::Document _id: "9c6182ff604654baa0d23aa7b73eb09d", _rev: "2-f47d99f2b9544508e83ab3af877f39f1", team: "FC. Barcelona", player: "Leo Messi"&gt;</span>
+</code></pre></div></div>
+
+<p>Notice same document <code class="highlighter-rouge">_id</code> but different <code class="highlighter-rouge">_rev</code>!</p>
+
+<h1 id="futon-couchdb-simple-web-interface">Futon: CouchDB simple web interface</h1>
+
+<p>This is a nice feature when building a new app using CouchDB and you want a quick check or access to your documentms. Instead of start using cURL you can use built-in Futon web interface opening this URL in your browser:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://localhost:5984/_utils/
+</code></pre></div></div>
+:ET

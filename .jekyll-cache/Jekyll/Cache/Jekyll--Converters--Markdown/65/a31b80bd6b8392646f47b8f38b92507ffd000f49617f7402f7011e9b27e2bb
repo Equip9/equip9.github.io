@@ -1,0 +1,26 @@
+I"}
+<p>Imagine building a web application is like sending a rocket to the Moon. How would you do it? You can start building your own now or learn how it was done back in 1969. After WWII, rocket science didn’t stop and evolved into designing a rocket that could make it to the Moon. After thorough research and analysis a new approach was developed: <a href="http://www.youtube.com/watch?v=DqQmoJafQlg#t=436">3-stage vehicle</a>.</p>
+
+<iframe width="640" height="390" src="//www.youtube.com/embed/DqQmoJafQlg#t=436" frameborder="0" allowfullscreen=""></iframe>
+
+<p><em>The Saturn I successfully demonstrated the key technique which would be vital in building a much larger Moon rocket. This was the concept of staging. In effect stacking multiple rockets one on top of the other.</em></p>
+
+<p><em>They learnt, through analysis, that the best way to do it was to get to orbit using multiple stages. The first stage would give you certain amount of what they would call delta-v, change in velocity, from zero to certain speed, and then you would drop off that whole stage: all its tanks, its engines, all the weight associated with it, so the second stage had much less mass to push.</em></p>
+
+<p><em>And if you do the calculations, the most efficient way to build a Moon rocket, one to get to the Moon, turned out to be a 3-stage vehicle.</em></p>
+
+<p>Now, think about how you develop a web application. What if you could embrace this approach? I’m sure you already use a web framework like <a href="http://rubyonrails.org">Ruby on Rails</a> or <a href="https://www.djangoproject.com/">django</a> which lets you build great web apps and you take advatage of a deployment platform like <a href="https://heroku.com">Heroku</a> which hosts your aps, executes it and install all your dependencies. You are heading to the Moon.</p>
+
+<p><strong>Now it’s time to actually land on the Moon:</strong> <a href="http://emberjs.com">Ember.js</a>.</p>
+
+<p>On a first stage you built your app and it left Earth using <em>Rails</em>, a second step pushed your app into space using a cloud platform like <em>Heroku</em>. A third stage can get rid of all your weight and land on the Moon. Doing any JavaScript coding on a Rails app feels like sending a robot to the Moon and expect it to work as programmed, but it does not feel <em>right</em>. Instead, using Ember.js you’ll feel like working on site.</p>
+
+<p>Useful links:</p>
+
+<ul>
+  <li><a href="http://emberjs.com/">Ember.js website</a></li>
+  <li><a href="http://discuss.emberjs.com/">Ember discussion forum</a></li>
+  <li><a href="http://emberwatch.com/">EmberWatch</a></li>
+  <li><a href="http://emberweekly.com/">EmberWeekly</a></li>
+</ul>
+:ET

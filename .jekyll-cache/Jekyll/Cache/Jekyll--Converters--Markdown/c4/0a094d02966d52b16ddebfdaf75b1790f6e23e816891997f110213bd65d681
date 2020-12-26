@@ -1,0 +1,40 @@
+I"4<p>Have you ever had to include a <strong>private gem</strong> into your rails application? I’ve read about some alternatives like <a href="http://www.gemfury.com/">Gemfury</a>, but a found pretty easy solution, instead of using your gem, include it as a git submodule in your Heroku application.</p>
+
+<p><strong>Be careful!! This is not the most secure way. We’ll use our private GitHub OAuth token.</strong></p>
+
+<p>First, we have to create our GitHub token using a HTTP request:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-u</span> &lt;github_username&gt; <span class="nt">-d</span> <span class="s1">'{"scopes": ["repo"], "note": "generate token"}'</span> https://api.github.com/authorizations
+Enter host password <span class="k">for </span>user <span class="s1">'&lt;github_username&gt;'</span>:
+</code></pre></div></div>
+
+<p>That will output a body like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="mi">9879871</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://api.github.com/authorizations/9879871</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">app</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">generate token (API)</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">url</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">http://developer.github.com/v3/oauth/#oauth-authorizations-api</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">client_id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">jdksauc98s932849euw</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">78fdf6s7d6g7fd6g7df6g7df6g7df6g7df</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">note</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">generate token</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">note_url</span><span class="dl">"</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">created_at</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2013-07-10T12:12:11Z</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">updated_at</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2013-07-10T12:12:11Z</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">scopes</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="dl">"</span><span class="s2">repo</span><span class="dl">"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We can use this <code class="highlighter-rouge">78fdf6s7d6g7fd6g7df6g7df6g7df6g7df</code> to add the git submodule:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>git submodule add https://78fdf6s7d6g7fd6g7df6g7df6g7df6g7df:x-oauth-basic@github.com/&lt;github_username&gt;/my-library.git lib/my-library
+</code></pre></div></div>
+
+<p>Next time you push your application to Heroku, it’ll pull the git submodule using the token to access your private repository.</p>
+
+<p>This can be also done using your <em>username</em> and <em>password</em> instead of the OAuth token.</p>
+:ET
